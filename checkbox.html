@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Hello MUI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="mui/css/mui.css" rel="stylesheet" />
+    <script src="mui/js/mui.js"></script>
+</head>
+
+<body>
+    <div class="mui-card">
+        <form class="mui-input-group">
+            <div class="mui-input-row mui-checkbox">
+                <label for="checkbox1l">运动</label>
+                <input name="checkbox" value="运动" type="checkbox" checked id="checkbox1l">
+            </div>
+            <div class="mui-input-row mui-checkbox">
+                <label for="checkbox2l">上网</label>
+                <input name="checkbox" value="上网" type="checkbox" id="checkbox2l">
+            </div>
+            <div class="mui-input-row mui-checkbox">
+                <label for="checkbox3l">郊游</label>
+                <input name="checkbox" value="郊游" type="checkbox" id="checkbox3l">
+            </div>
+            <div class="mui-input-row mui-checkbox">
+                <label for="checkbox4l">看书</label>
+                <input name="checkbox" value="看书" type="checkbox" id="checkbox4l">
+            </div>
+        </form>
+    </div>
+
+    <button type="button" class="mui-btn mui-btn-primary" id="button1">选择</button>
+    <script>
+        document.getElementById('button1').onclick = function () {
+            mui.confirm('', '确认删除？', ['确定','取消'], function (e) {
+                if (e) {
+                    var box = document.getElementsByTagName('input');
+                    var value = [];
+                    for (var i = 0; i < box.length; i++) {
+                        if (box[i].checked) {
+                            value.push(box[i].parentNode);    
+                        }
+                    }
+                    for (var x = 0; x < value.length; x++) {
+                        value[x].remove();
+                    }
+                }
+              
+            })
+        }
+    </script>
+</body>
+
+</html>

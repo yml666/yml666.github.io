@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="mui/css/mui.css" rel="stylesheet" />
+    <script src="mui/js/mui.js"></script>
+</head>
+<body>
+    <!--不循不播放图片轮播-->
+    <div class="mui-slider" style="width:50vw; margin:10vh auto;">
+        <div class="mui-slider-group">
+            <div class="mui-slider-item"><a href="#"><img src="img/img1.jpg" /></a></div>
+            <div class="mui-slider-item"><a href="#"><img src="img/img2.jpg" /></a></div>
+            <div class="mui-slider-item"><a href="#"><img src="img/img3.jpg" /></a></div>
+        </div>
+        <!--小圆点-->
+        <div class="mui-slider-indicator">
+            <div class="mui-indicator mui-active"></div>
+            <div class="mui-indicator"></div>
+            <div class="mui-indicator"></div>
+        </div>     
+    </div>
+
+    <!--循环不播放图片轮播-->
+    <div class="mui-slider" style="width:50vw; margin:0 auto;">
+        <div class="mui-slider-group mui-slider-loop">
+            <!--支持循环，需要重复图片节点-->
+            <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="img/img3.jpg" /></a></div>
+            <div class="mui-slider-item"><a href="#"><img src="img/img1.jpg" /></a></div>
+            <div class="mui-slider-item"><a href="#"><img src="img/img2.jpg" /></a></div>
+            <div class="mui-slider-item"><a href="#"><img src="img/img3.jpg" /></a></div>
+            <!--支持循环，需要重复图片节点-->
+            <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="img/img1.jpg" /></a></div>
+        </div>
+        <!--小圆点-->
+        <div class="mui-slider-indicator">
+            <div class="mui-indicator mui-active"></div>
+            <div class="mui-indicator mui-icon mui-icon-paperplane" style="background:0;"></div>
+            <div class="mui-indicator"></div>
+        </div>
+    </div>
+
+    <!--循环播放图片轮播JS-->
+    <script>
+        //自动循环单次播放时长
+        //获得slider插件对象
+        var gallery = mui('.mui-slider');
+        gallery.slider({
+            interval: 2000//自动轮播周期，若为0则不自动播放，默认为0；
+        });
+
+
+        //开始从第几张图片开始循环0为第一张
+        //获得slider插件对象
+        var gallery = mui('.mui-slider');
+        gallery.slider().gotoItem(1);//跳转到第index张图片，index从0开始；
+    </script>
+</body>
+</html>

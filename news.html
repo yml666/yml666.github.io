@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>新闻主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <style>
+        img {
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<script>
+    $(function() {
+        $.getJSON('http://api.ruicaiedu.cn/app.php/index/newsLists', function(d) {
+            //console.log(d)
+            $.each(d.retRes.data, function(a, b) {
+                var http = 'http://api.ruicaiedu.cn/';
+                // var oldtime = new Date(b.create_time * 1000);
+                // newTime = oldtime.toLocaleDateString();
+                var str = '<li data-id="' + b.id + '"><a href="#">';
+                str += '<img src="' + http + b.file_url + '">';
+                str += '<h2>' + b.title + '</h2>';
+                str += '<p>' + b.sub_title + '</p>';
+                str += '</a><a href="#" data-transition="pop"></a></li>';
+                $('div[class="ui-content"] ul').append(str);
+                $('div[class="ui-content"] ul').listview('refresh');
+                console.log(b.id);
+            })
+        })
+        $('div[class="ui-content"] ul').delegate('li', 'click', function() {
+            var id = $(this).data('id');
+            localStorage.id = id;
+            window.location.href = "new.html";
+        })
+    })
+</script>
+
+<body>
+    <div data-role="page" id="pageone">
+        <div data-role="main" class="ui-content">
+            <center>
+                <h2>今日新闻</h2>
+            </center>
+            <ul data-role="listview" data-inset="true">
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

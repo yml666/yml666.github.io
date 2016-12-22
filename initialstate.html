@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="react/react.min.js"></script>
+    <script src="react/react-dom.min.js"></script>
+    <script src="react/react-browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      var LikeButton = React.createClass({
+        getInitialState: function() {
+          return {liked:''};
+        },
+        handleClick: function(event) {
+          this.setState({liked:event.target.value});
+        },
+        render: function() {
+          return (
+            <p>
+              <input type="text" onChange={this.handleClick}/>
+              <b>{this.state.liked}</b>
+            </p>
+          );
+        }
+      });
+
+      React.render(
+        <LikeButton />,
+        document.getElementById('example')
+      );
+    </script>
+  </body>
+</html>

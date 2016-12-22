@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="react/react.min.js"></script>
+    <script src="react/react-dom.min.js"></script>
+    <script src="react/react-browser.min.js"></script>
+    <link href="weui/weui.min.css" rel="stylesheet" />
+    <script src="weui/weui.min.js"></script>
+</head>
+<body>
+
+<script type="text/babel">
+class Name extends React.Component {
+render (){
+  return (
+    <div>
+      <input type="text" ref="myTextInput" />
+      <input type="button" value="Focus the text input" onClick={this.handleClick} />
+    </div>
+    );
+  }
+  handleClick(){
+  let va = this.refs.myTextInput.value;
+  console.log(va);
+  }
+}
+
+</script>
+</body>
+</html>

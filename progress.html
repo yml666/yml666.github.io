@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <!--标准mui.css-->
+    <link href="mui/css/mui.css" rel="stylesheet" />
+    <script src="mui/js/mui.js"></script>
+    <style>
+        .mui-btn {
+            width:100px;
+            height:40px;
+            line-height:10px;
+        }
+        .mui-badge {
+        color:white;
+        background:gray;
+        font-size:15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mui-content">
+        <div class="mui-demo-container">
+            <div id="demo1">
+                <p style="height: 2px;">                 
+                </p>   
+                <span id="qp" class="mui-badge" style="height: 30px;width:50px;line-height:25px;text-align:center;"></span>           
+                <button type="button" class="mui-btn mui-btn-primary mui-btn-outlined mui-btn-block">开始加载</button>             
+            </div>                      
+        </div>
+    </div>
+
+    <script>			
+			//点击显示进度条
+        mui("#demo1").on('tap', '.mui-btn', function () {
+            clearTimeout();
+				var jdt = mui("#demo1 p");
+				jdt.progressbar({ progress: 0 }).show();
+				meth(jdt, 0);
+			    //读条
+				function meth(jdt, jd) {				  
+				    setTimeout(function () {
+				        jd += 10;
+				        mui(jdt).progressbar().setProgress(jd);
+				        if (jd <= 100) {				           
+				            document.getElementById('qp').innerText = jd;
+				            meth(jdt, jd);
+				        } else {				          
+				            document.getElementById('qp').innerText = '完成';
+				            mui(jdt).progressbar().hide();
+				        }
+				    }, 300);
+				}
+			});
+    </script>
+</body>
+</html>

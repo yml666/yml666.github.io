@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Hello MUI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="mui/css/mui.css" rel="stylesheet" />
+    <script src="mui/js/mui.js"></script>
+</head>
+<body>
+    <!--最大的div-->
+    <div class="mui-off-canvas-wrap mui-draggable" >
+        <!--旁边的菜单（功能和div差不多，语义化更强）-->
+        <aside class="mui-off-canvas-left">
+            <div class="mui-scroll-wrapper" style="background:pink;">
+                菜单内容
+            </div>
+        </aside>
+        <!--主页面-->
+        <div class="mui-inner-wrap">
+            <div class="mui-content mui-scroll-wrapper" >
+                主页面
+            </div>
+        </div>
+    </div>
+</body>
+</html>

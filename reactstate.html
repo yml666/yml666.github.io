@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/react-browser.min.js"></script>
+  </head>
+  <style>
+  *{margin:0;
+    padding:0;
+  }
+  </style>
+ <body>
+    <div id="message" align="center"></div>
+
+    <script type="text/babel">
+      var arr=['img/img1.jpg','img/img2.jpg','img/img3.jpg','img/img4.jpg','img/img5.jpg','img/img6.jpg','img/img7.jpg','img/img8.jpg'];
+      var Counter = React.createClass({
+        getInitialState: function () {
+          return { clickCount: 0 };
+        },
+        handleClick: function () {
+          this.setState(function(state) {
+              if(state.clickCount>=arr.length-1){
+                  state.clickCount=-1;
+              }
+            return {clickCount: state.clickCount + 1};
+          });
+        },
+        render: function () {
+          return (<img onClick={this.handleClick} src={arr[this.state.clickCount]} style={{width:'100vw'}}/>);
+        }
+      });
+      ReactDOM.render(
+        <Counter />,
+        document.getElementById('message')
+      );
+    </script>
+  </body>
+</html>

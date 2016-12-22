@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="weui/weui.min.css">
+    <script type="text/javascript" src="weui/weui.min.js"></script>
+    <style>
+        .buttonbc {
+        background:#1aad19;
+        }
+        .toast-style {
+            line-height:60vh;
+            font-size:8vh;
+        }
+    </style>
+</head>
+<body>  
+    <button class="weui-btn buttonbc" id="button1">点击</button>
+    <script type="text/javascript">
+        document.querySelector('button[class="weui-btn buttonbc"]').addEventListener('click', function () {
+            weui.toast('欢迎使用', {
+                className: 'toast-style'
+            });
+        })
+
+    </script>
+</body>
+</html>

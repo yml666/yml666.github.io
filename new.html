@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            text-align: center;
+        }
+        
+        li {
+            list-style-type: none;
+        }
+        
+        img {
+            height: 20vh;
+        }
+    </style>
+</head>
+<script>
+    $(function() {
+        $.getJSON('http://api.ruicaiedu.cn/app.php/index/newsInfo/id/' + localStorage.id, function(d) {
+            //console.log(d)
+            console.log(d);
+            var http = 'http://api.ruicaiedu.cn/';
+            var str = '<ul><li>' + d.retRes.title + '</li>';
+            str += '<li>' + d.retRes.sub_title + '</li>';
+            str += '<img src="' + http + d.retRes.file_url + '">';
+            str += '<li>' + d.retRes.contents + '</li></ul>';
+            $('div').append(str);
+        })
+    })
+</script>
+
+<body>
+    <div>
+    </div>
+</body>
+
+</html>

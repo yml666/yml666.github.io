@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="react/react.min.js"></script>
+    <script src="react/react-dom.min.js"></script>
+    <script src="react/react-browser.min.js"></script>
+    <link href="weui/weui.min.css" rel="stylesheet" />
+    <script src="weui/weui.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+    var MyComponent = React.createClass({
+      handleClick: function() {
+        // 使用原生的 DOM API 获取焦点
+        var username=this.refs.username.value;
+        var userpwd=this.refs.userpwd.value;
+        if(username=='yml'&&userpwd=='123'){
+            weui.toast('登陆成功');
+        }
+        else{
+            weui.toast('登陆失败');
+        }
+      },
+      render: function() {
+        //  当组件插入到 DOM 后，ref 属性添加一个组件的引用于到 this.refs
+        return (
+        <div>
+          <form className="weui-cells weui-cells_form">
+            <p className="weui-cell"><lable className="weui-label">用户名：</lable><input type="text" ref="username" className="weui-input weui-cell__bd"/></p>
+            <p className="weui-cell"><lable className="weui-label">密&nbsp;码：</lable><input type="password" ref="userpwd" className="weui-input weui-cell__bd"/></p>
+          </form>
+          <p className="weui-btn-area"><input
+              type="button"
+              value="登陆"
+              onClick={this.handleClick}
+              className="weui-btn weui-btn_primary"
+            /></p>
+            </div>
+        );
+      }
+    });
+
+    ReactDOM.render(
+      <MyComponent />,
+      document.getElementById('example')
+    );
+    </script>
+  </body>
+</html>

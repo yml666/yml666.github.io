@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="jquery mobile/kf.css" />
+    <link rel="stylesheet" href="jquery mobile/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+        $(function() {
+            $('#submit').click(function() {
+                //trim()裁剪掉字符串中的空格
+                var username = $('#fname').val().trim();
+                var userpwd = $('#fname1').val().trim();
+                console.log(username + '.....' + userpwd)
+                $.get('http://www.yml818.com/info.php', {
+                    username: username,
+                    userpwd: userpwd
+                }, function(data) {
+                    alert(data);
+                })
+            })
+        })
+    </script>
+    </script>
+</head>
+
+<body>
+
+    <div data-role="page">
+        <div data-role="main" class="ui-content">
+            <form method="get" action="javascrpit:void(0);">
+                <label for="fname">用户名：</label>
+                <input type="text" name="fname" id="fname">
+                <label for="fname1">密码：</label>
+                <input type="password" name="fname" id="fname1">
+                <input type="submit" data-inline="true" value="登陆" id="submit">
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

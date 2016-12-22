@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <!--标准mui.css-->
+    <link href="mui/css/mui.css" rel="stylesheet" />
+    <!--App自定义的css-->
+    <link href="mui/piker/app.css" rel="stylesheet" />
+    <link href="mui/piker/mui.picker.css" rel="stylesheet" />
+    <link href="mui/piker/mui.poppicker.css" rel="stylesheet" />
+    <style>
+        .mui-btn {
+            font-size: 16px;
+            padding: 8px;
+            margin: 3px;
+            background:#0094ff;
+            color:white;
+        }
+
+        h5.mui-content-padded {
+            margin-left: 3px;
+            margin-top: 20px !important;
+        }
+
+            h5.mui-content-padded:first-child {
+                margin-top: 12px !important;
+            }
+
+        .ui-alert {
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 16px;
+        }
+        body>.mui-progressbar{
+	        top:0
+        }   
+    </style>
+</head>
+<body>
+    <div class="mui-content">
+        <div class="mui-content-padded">
+            <button id='button1' class="mui-btn mui-btn-block" type='button'>选择你最想去的地方</button>
+            <div id='pic' class="ui-alert"></div>
+        </div>
+    </div>
+    <script src="mui/js/mui.js"></script>
+    <script src="mui/piker/mui.picker.js"></script>
+    <script src="mui/piker/mui.poppicker.js"></script>
+    <script>
+
+
+					var userPicker = new mui.PopPicker();
+					userPicker.setData([{
+						value: 'img/img1.jpg',
+						text: '风景1'
+					}, {
+						value: 'img/img2.jpg',
+						text: '风景2'
+					}, {
+						value: 'img/img3.jpg',
+						text: '风景3'
+					}]);
+					var button1 = document.getElementById('button1');
+					var pic = document.getElementById('pic');
+					button1.addEventListener('tap',function(){
+					    userPicker.show(function(items) {
+					        var img = items[0].value;
+					        pic.innerHTML = '<img src=' + img + ' style="width:80vw; margin:0 auto;">';
+					    });
+					    return false;
+					});
+    </script>
+</body>
+</html>

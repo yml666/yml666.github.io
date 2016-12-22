@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>reactajax</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="react/react.min.js"></script>
+    <script src="react/react-dom.min.js"></script>
+    <script src="react/react-browser.min.js"></script>
+    <script src="jquery/jquery.js"></script>
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <style>
+        body{
+           background:#dfdfdf; 
+        }
+        a {
+            text-decoration: none;
+            color: black;
+            display: block;
+        }
+        a:hover,a:link{
+            text-decoration: none;
+            color: gray;
+            display: block;    
+        }
+        h5{
+            color:gray;
+        }
+        .thumbnail:hover{
+            background:#eeeeee;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        var UserGist = React.createClass({
+             getInitialState: function() { 
+                 return { movieName: ''}; 
+                 }, 
+             componentWillMount: function() {
+                 var that=this;
+                  var arrname=[];
+                  $.getJSON(this.props.source, function (result) {
+                       $.each(result.subjects, function(a, b) {
+                           arrname.push(
+                               <div className="col-sm-6 col-md-4" style={{paddingRight:"0",paddingLeft:"0",margin:"0 auto"}}>
+                               <a href="javascript:void(0)"> 
+                                    <div className="thumbnail">
+                                    <div className="media-left">
+                                        <img src={b.images.small}/>
+                                    </div>
+                                    <div className="media-body">
+                                        <h4>{b.title}</h4>
+                                        <h6>{b.original_title}</h6>
+                                        <h5>{"上映时间："+b.year+"年"}</h5>
+                                    </div>
+                                    </div>
+                                    </a>
+                                    </div>
+                                    );    
+                       })
+                       that.setState({ 
+                          movieName:arrname,
+                       });                      
+                  }); 
+            }, 
+            render: function() {
+                return (
+                <div className="row" style={{width:"99.7vw",marginLeft:"0",marginRight:"0"}}>
+                {this.state.movieName} 
+                </div>
+                
+                );      
+              } });
+         ReactDOM.render(
+        <UserGist source="http://www.yml818.com/reactdoubanajax.php" />, document.getElementById('example') );
+    </script>
+</body>
+
+</html>
